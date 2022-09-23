@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     //public Transform otherObject;
 
-   
+    public GameManager gm;
     public float speed = 5;
 
     // Start is called before the first frame update
@@ -33,5 +33,27 @@ public class PlayerController : MonoBehaviour
         transform.Translate(xMove * speed * Time.deltaTime , 0, 0);
 
         //transform.position= new Vector3(0, 0, 0);
+    }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+      //  Debug.Log("Collided");
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hazard") 
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            gm.IncrementScore(1);
+
+            Destroy(collision.gameObject);
+        }
+
+        //Debug.Log("Triggered");
     }
 }

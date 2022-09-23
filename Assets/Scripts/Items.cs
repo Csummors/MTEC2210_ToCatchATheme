@@ -27,4 +27,16 @@ public class Items : MonoBehaviour
     {
         transform.Translate(0, -speed * Time.deltaTime, 0, 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log(collision.gameObject.name);
+
+       if (collision.gameObject.tag == "Ground")
+       {
+           Destroy(gameObject);
+        }
+
+
+    }
 }
