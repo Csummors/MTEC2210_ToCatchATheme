@@ -50,8 +50,15 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Coin")
         {
             gm.IncrementScore(1);
+            
 
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Theme")
+        {
+
+            Debug.Log("Theme Triggered");
+           
         }
 
         //Debug.Log("Triggered");
